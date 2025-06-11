@@ -50,3 +50,15 @@ jobs:
           serviceCredentialsFileContent: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
           groups: testers
           file: build/app/outputs/flutter-apk/app-release.apk
+
+      - name: Send Slack Notification
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_COLOR: '#36a64f'
+          SLACK_MESSAGE: |
+            ✅ *CI/CD Workflow Complete!*
+            🔧 Repository: `${{ github.repository }}`
+            🚀 Branch: `${{ github.ref_name }}`
+            🧪 Tests: Passed
+            📦 APK: Uploaded to Firebase App Distribution
