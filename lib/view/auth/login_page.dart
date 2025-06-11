@@ -284,7 +284,7 @@ class LoginPage extends StatelessWidget {
                                       },
                                       onCodeAutoRetrievalTimeout:
                                           (verificationId) {
-                                        // Handle timeout if needed
+                                        // TODO: Handle timeout if necessary
                                       },
                                     );
                                   }
