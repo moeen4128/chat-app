@@ -17,6 +17,7 @@ void main() async {
 
   await pubspec.writeAsString(newLines.join('\n'));
 
+  // ignore: avoid_print
   print('✅ Updated version: $versionName+$versionCode');
 }
 
