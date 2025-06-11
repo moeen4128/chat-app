@@ -1,5 +1,5 @@
 import 'dart:io';
-import 'package:flutter/foundation.dart';
+
 void main() async {
   final commitCount = await _getGitCommitCount();
   final versionCode = commitCount;
@@ -17,7 +17,8 @@ void main() async {
 
   await pubspec.writeAsString(newLines.join('\n'));
 
-  debugPrint('✅ Updated version: $versionName+$versionCode');
+  // ignore: avoid_print
+  print('✅ Updated version: $versionName+$versionCode');
 }
 
 Future<int> _getGitCommitCount() async {
