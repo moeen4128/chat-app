@@ -21,12 +21,12 @@ class AppTextStyles {
 
   static const TextStyle buttonText = TextStyle(
     fontSize: 12,
-    color: AppColors.secondary_dark,
+    color: AppColors.secondaryDark,
   );
   static const TextStyle testButton = TextStyle(
     fontSize: 12,
     fontWeight: FontWeight.w700,
-    color: AppColors.primary_main,
+    color: AppColors.primaryMain,
   );
 
   static const TextStyle label = TextStyle(

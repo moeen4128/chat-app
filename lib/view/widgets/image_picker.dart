@@ -27,7 +27,6 @@ class _ProfileImagePickerState extends State<ProfileImagePicker> {
   }
 
   void _showImagePickerOptions() {
-    print("fun call");
     showModalBottomSheet(
       backgroundColor: AppColors.white,
       context: context,
@@ -74,7 +73,7 @@ class _ProfileImagePickerState extends State<ProfileImagePicker> {
               right: 4,
               child: CircleAvatar(
                 radius: 18,
-                backgroundColor: AppColors.primary_main,
+                backgroundColor: AppColors.primaryMain,
                 child: Icon(Icons.add, color: Colors.white, size: 20),
               ),
             ),

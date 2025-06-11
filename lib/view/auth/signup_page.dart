@@ -30,12 +30,12 @@ class SignupPage extends StatelessWidget {
                     ? Image(
                   width: double.infinity,
                   fit: BoxFit.cover,
-                  image: AssetImage(ImageString.login_pwa),
+                  image: AssetImage(ImageString.loginPwa),
                 )
                     : Image(
                   width: double.infinity,
                   fit: BoxFit.cover,
-                  image: AssetImage(ImageString.login_verification_pwa),
+                  image: AssetImage(ImageString.loginVerificationPwa),
                 ),
                 Positioned(
                   bottom: -60, // Adjust this value for desired overlap
@@ -59,7 +59,7 @@ class SignupPage extends StatelessWidget {
                   Visibility(
                     visible: !authVM.isLoginTabSelected,
                     child: Text(
-                      AppString.SignIn_for_account,
+                      AppString.signInForAccount,
                       style: AppTextStyles.headline1,
                     ),
                   ),
@@ -83,8 +83,8 @@ class SignupPage extends StatelessWidget {
                                           Image.asset(
                                             authVM.isLoginTabSelected
                                                 ? ImageString
-                                                    .selected_icon_login
-                                                : ImageString.icon_login,
+                                                    .selectedIconLogin
+                                                : ImageString.iconLogin,
                                             height: AppSizes.height,
                                             width: AppSizes.width,
                                           ),
@@ -101,7 +101,7 @@ class SignupPage extends StatelessWidget {
                                         width: double.infinity,
                                         color:
                                             authVM.isLoginTabSelected
-                                                ? AppColors.primary_main
+                                                ? AppColors.primaryMain
                                                 : Colors.transparent,
                                       ),
                                     ],
@@ -120,8 +120,8 @@ class SignupPage extends StatelessWidget {
                                           Image.asset(
                                             !authVM.isLoginTabSelected
                                                 ? ImageString
-                                                    .selected_icon_verification
-                                                : ImageString.icon_verification,
+                                                    .selectedIconVerification
+                                                : ImageString.iconVerification,
                                             height: AppSizes.height,
                                             width: AppSizes.width,
                                           ),
@@ -138,7 +138,7 @@ class SignupPage extends StatelessWidget {
                                         width: double.infinity,
                                         color:
                                             !authVM.isLoginTabSelected
-                                                ? AppColors.primary_main
+                                                ? AppColors.primaryMain
                                                 : Colors.transparent,
                                       ),
                                     ],
@@ -154,15 +154,15 @@ class SignupPage extends StatelessWidget {
                               ? Column(
                                 children: [
                                   CustomTextFormField(
-                                    hintText: AppString.signup_hintText,
-                                    labelText: AppString.signup_labelText,
+                                    hintText: AppString.signupHintText,
+                                    labelText: AppString.signupLabelText,
                                     keyboardType: TextInputType.text,
                                   ),
                                   SizedBox(height: AppSizes.spaceSM),
                                   CustomTextFormField(
                                     prefixIcon: Icons.phone,
-                                    hintText: AppString.login_hintText,
-                                    labelText: AppString.login_labelText,
+                                    hintText: AppString.loginHintText,
+                                    labelText: AppString.loginLabelText,
                                     keyboardType: TextInputType.number,
                                   ),
 
@@ -170,13 +170,13 @@ class SignupPage extends StatelessWidget {
                                   CustomButtonIcon(
                                     onPressed: () {},
                                     iconPath:
-                                        ImageString.icon_player_track_next,
+                                        ImageString.iconPlayerTrackNext,
                                     text: AppString.nextStep,
                                   ),
                                   SizedBox(height: AppSizes.spaceXXL),
                                   TextWithAction(
-                                    text: AppString.You_have_account,
-                                    actionText: AppString.Login,
+                                    text: AppString.youHaveAccount,
+                                    actionText: AppString.login,
                                     onPressed: () {
                                       Navigator.pushNamed(context, '/login');
                                     },
@@ -191,21 +191,21 @@ class SignupPage extends StatelessWidget {
                               : Column(
                                 children: [
                                   CustomTextFormField(
-                                    hintText: AppString.verificatio_hintText,
-                                    labelText: AppString.verificatio_labelText,
+                                    hintText: AppString.verificationHintText,
+                                    labelText: AppString.verificationLabelText,
                                     prefixIcon: Icons.phone,
                                     keyboardType: TextInputType.number,
                                   ),
                                   SizedBox(height: AppSizes.spaceXXL),
                                   CustomButtonIcon(
                                     onPressed: () {},
-                                    iconPath: ImageString.icon_login_button,
+                                    iconPath: ImageString.iconLoginButton,
                                     text: AppString.loginButton,
                                   ),
                                   SizedBox(height: AppSizes.spaceXXL),
                                   TextWithAction(
-                                    text: AppString.Did_not_recive_code,
-                                    actionText: AppString.TryAgain,
+                                    text: AppString.didNotReceiveCode,
+                                    actionText: AppString.tryAgain,
                                     onPressed: () {
                                       // handle navigation or logic here
                                     },

@@ -31,12 +31,12 @@ class LoginPage extends StatelessWidget {
                 ? Image(
               width: double.infinity,
               fit: BoxFit.cover,
-              image: AssetImage(ImageString.login_pwa),
+              image: AssetImage(ImageString.loginPwa),
             )
                 : Image(
               width: double.infinity,
               fit: BoxFit.cover,
-              image: AssetImage(ImageString.login_verification_pwa),
+              image: AssetImage(ImageString.loginVerificationPwa),
             ),
             SizedBox(height: AppSizes.spaceXL),
             Padding(
@@ -47,7 +47,7 @@ class LoginPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    AppString.login_on_your_account,
+                    AppString.loginOnYourAccount,
                     style: AppTextStyles.headline1,
                   ),
                   SizedBox(height: AppSizes.spaceL),
@@ -69,8 +69,8 @@ class LoginPage extends StatelessWidget {
                                         children: [
                                           Image.asset(
                                             authVM.isLoginTabSelected
-                                                ? ImageString.selected_icon_login
-                                                : ImageString.icon_login,
+                                                ? ImageString.selectedIconLogin
+                                                : ImageString.iconLogin,
                                             height: AppSizes.height,
                                             width: AppSizes.width,
                                           ),
@@ -84,7 +84,7 @@ class LoginPage extends StatelessWidget {
                                         height: AppSizes.underline,
                                         width: double.infinity,
                                         color: authVM.isLoginTabSelected
-                                            ? AppColors.primary_main
+                                            ? AppColors.primaryMain
                                             : Colors.transparent,
                                       ),
                                     ],
@@ -103,8 +103,8 @@ class LoginPage extends StatelessWidget {
                                           Image.asset(
                                             !authVM.isLoginTabSelected
                                                 ? ImageString
-                                                .selected_icon_verification
-                                                : ImageString.icon_verification,
+                                                .selectedIconVerification
+                                                : ImageString.iconVerification,
                                             height: AppSizes.height,
                                             width: AppSizes.width,
                                           ),
@@ -118,7 +118,7 @@ class LoginPage extends StatelessWidget {
                                         height: AppSizes.underline,
                                         width: double.infinity,
                                         color: !authVM.isLoginTabSelected
-                                            ? AppColors.primary_main
+                                            ? AppColors.primaryMain
                                             : Colors.transparent,
                                       ),
                                     ],
@@ -135,8 +135,8 @@ class LoginPage extends StatelessWidget {
                               CustomTextFormField(
                                 controller: phoneController,
                                 prefixIcon: Icons.phone,
-                                hintText: AppString.login_hintText,
-                                labelText: AppString.login_labelText,
+                                hintText: AppString.loginHintText,
+                                labelText: AppString.loginLabelText,
                                 keyboardType: TextInputType.phone,
                               ),
                               SizedBox(
@@ -167,15 +167,15 @@ class LoginPage extends StatelessWidget {
                                     },
                                     onVerificationCompleted:
                                         (credential) async {
+                                          final navigator = Navigator.of(context);
+                                          final messenger = ScaffoldMessenger.of(context);
                                       try {
                                         await FirebaseAuth.instance
                                             .signInWithCredential(
                                             credential);
-                                        Navigator.pushReplacementNamed(
-                                            context, '/home');
+                                        navigator.pushReplacementNamed('/home');
                                       } catch (e) {
-                                        ScaffoldMessenger.of(context)
-                                            .showSnackBar(
+                                        messenger.showSnackBar(
                                           SnackBar(
                                               content: Text(
                                                   'Error: ${e.toString()}')),
@@ -189,15 +189,15 @@ class LoginPage extends StatelessWidget {
                                   );
                                 },
                                 iconPath:
-                                ImageString.icon_player_track_next,
+                                ImageString.iconPlayerTrackNext,
                                 text: AppString.nextStep,
                               ),
                               SizedBox(
                                 height: AppSizes.spaceXXL,
                               ),
                               TextWithAction(
-                                text: AppString.Dont_Have_Account,
-                                actionText: AppString.SignIn,
+                                text: AppString.dontHaveAccount,
+                                actionText: AppString.signIn,
                                 onPressed: () {
                                   Navigator.pushNamed(context, '/signup');
                                 },
@@ -210,8 +210,8 @@ class LoginPage extends StatelessWidget {
                             children: [
                               CustomTextFormField(
                                 controller: smsCodeController,
-                                hintText: AppString.verificatio_hintText,
-                                labelText: AppString.verificatio_labelText,
+                                hintText: AppString.verificationHintText,
+                                labelText: AppString.verificationLabelText,
                                 prefixIcon: Icons.phone,
                                 keyboardType: TextInputType.number,
                               ),
@@ -245,15 +245,15 @@ class LoginPage extends StatelessWidget {
                                     },
                                   );
                                 },
-                                iconPath: ImageString.icon_login_button,
+                                iconPath: ImageString.iconLoginButton,
                                 text: AppString.loginButton,
                               ),
                               SizedBox(
                                 height: AppSizes.spaceXXL,
                               ),
                               TextWithAction(
-                                text: AppString.Did_not_recive_code,
-                                actionText: AppString.TryAgain,
+                                text: AppString.didNotReceiveCode,
+                                actionText: AppString.tryAgain,
                                 onPressed: () {
                                   if (authVM.phoneNumber != null) {
                                     authVM.verifyPhoneNumber(
@@ -267,15 +267,15 @@ class LoginPage extends StatelessWidget {
                                       },
                                       onVerificationCompleted:
                                           (credential) async {
+                                            final navigator = Navigator.of(context);
+                                            final messenger = ScaffoldMessenger.of(context);
                                         try {
                                           await FirebaseAuth.instance
                                               .signInWithCredential(
                                               credential);
-                                          Navigator.pushReplacementNamed(
-                                              context, '/home');
+                                          navigator.pushReplacementNamed('/home');
                                         } catch (e) {
-                                          ScaffoldMessenger.of(context)
-                                              .showSnackBar(
+                                          messenger.showSnackBar(
                                             SnackBar(
                                                 content: Text(
                                                     'Error: ${e.toString()}')),
@@ -284,7 +284,7 @@ class LoginPage extends StatelessWidget {
                                       },
                                       onCodeAutoRetrievalTimeout:
                                           (verificationId) {
-                                        // TODO: Handle timeout if necessary
+                                            // TODO: Handle timeout if necessary
                                       },
                                     );
                                   }

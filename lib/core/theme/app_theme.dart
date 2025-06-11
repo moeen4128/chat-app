@@ -15,7 +15,7 @@ class AppTheme {
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
-        backgroundColor: AppColors.primary_main,
+        backgroundColor: AppColors.primaryMain,
         foregroundColor: Colors.white,
         textStyle: AppTextStyles.button,
         shape: RoundedRectangleBorder(
@@ -32,7 +32,7 @@ class AppTheme {
       ),
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(AppSizes.radiusDefault),
-        borderSide: BorderSide(color: AppColors.secondary_main),
+        borderSide: BorderSide(color: AppColors.secondaryMain),
       ),
     ),
   );
