@@ -3,7 +3,7 @@ name: Flutter CI
 on:
   push:
     branches:
-      - master  # ya "main"
+      - master  # or "main"
   pull_request:
 
 jobs:
@@ -19,18 +19,17 @@ jobs:
         uses: subosito/flutter-action@v2
         with:
           flutter-version: '3.29.2'
+
       - name: Update versionCode & versionName
         run: dart tools/update_version.dart
 
       - name: Commit version bump
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-            git config user.name "github-actions"
-            git config user.email "actions@github.com"
-            git add pubspec.yaml
-            git commit -m "🔖 CI: Version bump"
-            git push origin HEAD:${{ github.ref_name }}
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add pubspec.yaml
+          git commit -m "🔖 CI: Version bump" || echo "No changes to commit"
+          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} HEAD:${{ github.ref_name }}
 
       - name: Install Dependencies
         run: flutter pub get
@@ -51,4 +50,3 @@ jobs:
           serviceCredentialsFileContent: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
           groups: testers
           file: build/app/outputs/flutter-apk/app-release.apk
-
